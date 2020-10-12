@@ -1,0 +1,7 @@
+program aplicatia10;
+
+        uses Flexunit;
+
+begin
+  { Main program }
+end.

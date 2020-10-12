@@ -1,0 +1,15 @@
+program lab10;
+
+        var a: word;
+
+begin
+
+     DDRC:= %00011111;
+     
+     while 1=1 do begin
+           a:= ADC_Read(1);  // Citirea pe canalul 1 al convertorului
+           a:= a div 32;     // se imparte valoare citita pentru a putea citi
+           PORTC:= a;        // pe leduri
+     end;
+
+end.

@@ -1,0 +1,20 @@
+program aplicatia6;
+
+        uses Flexunit;
+        var k:word;
+
+begin
+
+     LCD_init;
+     
+     while 1=1 do begin
+     
+           k:=ADC_Read(0);
+           k:= k div 8;
+           LCD_word(1, 8, k);
+           LCD_text(1, 1, 'Valoare:');
+           LCD_text(2, 6, 'Lab10');
+           delay_ms(30);
+     end;
+
+end.

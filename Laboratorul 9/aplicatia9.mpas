@@ -1,0 +1,29 @@
+program aplicatia9;
+
+uses Flexunit;
+
+const character: array[0..7] of byte = (31,17,0,26,30,1,31,1);
+
+procedure CustomChar();
+var i: Byte;
+
+begin
+
+     LCD_CMD(64);
+     for i := 0 to 7 do LCD_data(character[i]);
+     // LCD_CMD(_LCD_RETURN_HOME);
+     // LCD_Chr(pos_row, pos_char, 0);
+  
+end;
+
+begin
+     CustomChar();
+     LCD_init;
+     while 1=1 do begin
+
+           LCD_text(1, 1, 'Characterul meu:');
+           LCD_move(2, 4);
+           LCD_data(0);
+           
+     end;
+end.

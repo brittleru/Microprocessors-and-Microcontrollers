@@ -1,0 +1,21 @@
+program ex1;
+
+    const cifra:
+          array [0..9] of byte = {$3f, $06, $4f,
+                                  $66, $6D, $7D,
+                                  $07, $7F, %6F}; // coduri hexazecimale
+    var i:byte;
+
+begin
+     DDRC:= $FF;                                 // set port C output
+     DDRA:= $f0;                                 // set port A output
+     while 1=1 do begin                          // loop infinit
+           for i:=0 to 9 do begin                // for pt a pargurge vec
+               PORTA.4 := 1;                     // se activeaza pinul 4
+               PORTC := cifra[i];                // se scrie pe portul C
+                                                 // termenii din array
+               while PINA.0 = 0 do begin end;
+               while PINA.0 = 1 do begin end;
+           end;
+     end;
+end.

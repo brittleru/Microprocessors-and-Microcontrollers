@@ -1,0 +1,13 @@
+program programul1;
+
+begin
+
+    asm
+         LDI R25,%11111111     // REGISTRUL 25, 11111111= 8 LED-URI
+         OUT DDRC,R25          //REGISTRU CARE-SI IA DATELE
+  
+         LDI R25,%10000011
+         OUT PORTC,R25
+         
+    end;
+end.

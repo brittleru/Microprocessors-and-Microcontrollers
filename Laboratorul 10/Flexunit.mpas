@@ -1,0 +1,229 @@
+unit Flexunit;
+procedure lcd_init;                            //initializare lcd
+procedure lcd_data(b:byte);                     //un caracter la pozitia curenta;
+procedure lcd_cmd(b:byte);                      //trimite comenzi ca si cele originale
+procedure lcd_clear;                            //evident
+procedure lcd_move(r,c:byte);                   //setare pozitie rand si coloana
+procedure lcd_text(r,c:byte; var s:string[16]); //afisare text la rand si coloana
+procedure lcd_byte(r,c,b:byte);                 // afisare byte la rand si coloana
+procedure lcd_word(r,c:byte;w:word);            //afisare word la rand si coloana
+procedure Init_pwm;
+procedure Init_int0;
+procedure Init_int1;
+procedure Init_int2;
+procedure Motor0(a:short);
+procedure Motor1(a:short);
+procedure stai_us(timp:word);
+procedure serial_init;
+procedure serial_send(in_0,in_1,ref:word;);
+implementation
+//******************************************************************************
+procedure serial_init;
+begin
+UART1_Init(9600);
+end;
+//******************************************************************************
+procedure serial_send(in_0,in_1,ref:word;);
+var datab:byte;
+begin
+datab:=in_0 mod 256;UART1_Write(datab);delay_ms(20);
+datab:=in_0 div 256;UART1_Write(datab);delay_ms(20);
+datab:=in_1 mod 256;UART1_Write(datab);delay_ms(20);
+datab:=in_1 div 256;UART1_Write(datab);delay_ms(20);
+datab:=ref  mod 256;UART1_Write(datab);delay_ms(20);
+datab:=ref  div 256;UART1_Write(datab);delay_ms(20);
+//datab:=kp          ;UART1_Write(datab);delay_ms(20);
+end;
+//******************************************************************************
+Procedure Init_pwm;
+begin
+ddrd.5:=1;portd.5:=0;
+ddrb.3:=1;portb.3:=0;
+ddrd.4:=1;portd.4:=0;
+ddrb.1:=1;portb.1:=0;
+tccr1a:=$A1;
+tccr1b:=$0A;
+ocr1ah:=0;ocr1al:=0;
+ocr1bh:=0;ocr1bl:=0;
+end ;
+//******************************************************************************
+Procedure Init_int0;
+begin
+gicr.int0:=1;
+sreg.7:=1;
+mcucr.isc00:=1;
+mcucr.isc01:=1;
+end;
+//******************************************************************************
+Procedure Init_int1;
+begin
+gicr.int1:=1;
+sreg.7:=1;
+mcucr.isc10:=1;
+mcucr.isc11:=1;
+end;
+//******************************************************************************
+Procedure Init_int2;
+begin
+gicr.int2:=1;
+sreg.7:=1;
+mcucsr.isc2:=1;
+end;
+//******************************************************************************
+Procedure Motor0(a:short);
+begin
+if a>=0 then begin
+                 portb.3:=0;
+                 ocr1al:=a*2;
+            end
+       else begin
+                 portb.3:=1;
+                 ocr1al:=256+a*2;
+            end;
+end;
+//******************************************************************************
+Procedure Motor1(b:short);
+begin
+if b>=0 then begin
+                 portb.1:=0;
+                 ocr1bl:=b*2;
+            end
+       else begin
+                 portb.1:=1;
+                 ocr1bl:=256+b*2;
+            end;
+end;
+//******************************************************************************
+procedure stai_us(timp:word);
+begin
+ASM
+   PUSH R24
+   PUSH R25
+   LDD R24, Y+0
+   LDD R25, Y+1
+   SBIW R24, 2
+   CICLU_STAI_US_16:
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    NOP
+                    SBIW R24,1
+   BRNE CICLU_STAI_US_16
+   POP R25
+   POP R24
+END;
+end;
+
+procedure lcd_comm(t,b:byte);
+var m,n,o:byte;
+begin
+  //save
+  m:=ddrc;
+  n:=portc;
+  o.0:=ddrd.6;
+  o.1:=portd.6;
+  //write
+  ddrc:=$ff;
+  ddrd.6:=1;
+  if t=1 then portd.6:=1 else portd.6:=0;
+  portc:=b;
+  delay_us(20);
+  portd.7:=1;
+  delay_us(20);
+  portd.7:=0;
+  delay_us(20);
+  //restore
+  ddrc:=m;
+  portc:=n;
+  ddrd.6:=o.0;
+  portd.6:=o.1;
+end;
+
+procedure lcd_init;
+begin
+  //!!!!!!!!
+  ddrd.7:=1;
+  delay_ms(20);
+  lcd_comm(0,$30);
+  delay_ms(5);
+  lcd_comm(0,$30);
+  delay_us(150);
+  lcd_comm(0,$30);
+  lcd_comm(0,$38);
+  lcd_comm(0,$08);
+  lcd_comm(0,$01);
+  delay_ms(5);
+  lcd_comm(0,$06);
+  lcd_comm(0,$0c);
+end;
+
+procedure lcd_data(b:byte);
+begin
+  lcd_comm(1,b);
+end;
+
+procedure lcd_cmd(b:byte);
+begin
+  lcd_comm(0,b);
+end;
+
+procedure lcd_clear;
+begin
+  lcd_comm(0,1);
+end;
+
+procedure lcd_move(r,c:byte);
+begin
+  if r=1 then
+    lcd_comm(0,128+c-1)
+  else
+    lcd_comm(0,192+c-1);
+end;
+
+procedure lcd_text(r,c:byte; var s:string[16]);
+var i:byte;
+begin
+  lcd_move(r,c);
+  i:=0;
+  while s[i]<>0 do begin
+    lcd_data(s[i]);
+    inc(i);
+  end;
+end;
+
+procedure lcd_byte(r,c,b:byte);
+begin
+  lcd_move(r,c);
+  lcd_data((b div 100)+ord('0'));
+  lcd_data((b div 10 mod 10)+ord('0'));
+  lcd_data((b mod 10)+ord('0'));
+end;
+
+procedure lcd_word(r,c:byte;w:word);
+var i,j:byte;
+begin
+  lcd_move(r,c+4);
+  lcd_cmd($04);
+  i:=0;
+  while w<>0 do begin
+    lcd_data((w mod 10)+ord('0'));
+    w:=w div 10;
+    i:=i+1;
+  end;
+  if i=0 then begin
+    inc(i);
+    lcd_data('0');
+  end;
+  for j:=i to 4 do
+    lcd_data(' ');
+  lcd_cmd(6);
+end;
+end.

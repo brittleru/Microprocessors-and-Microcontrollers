@@ -1,0 +1,11 @@
+program aplicatia3;
+
+uses Flexunit;
+
+begin
+
+     LCD_init;
+     LCD_text(1, 3, 'Mocanu');
+     LCD_text(2, 4, 'Sebastian');
+     
+end.

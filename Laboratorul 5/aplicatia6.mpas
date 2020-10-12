@@ -1,0 +1,15 @@
+program aplicatia6;
+
+{ Declarations section }
+
+begin
+  { Main program }
+
+
+  ddrc:=$FF;
+  portc.1:=1;
+  portc.4:=1;
+  portc.7:=1;
+
+
+end.

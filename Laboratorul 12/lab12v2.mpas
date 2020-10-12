@@ -1,0 +1,45 @@
+program lab12v2;
+
+        uses Flexunit;
+        const i : integer = 20;
+              pas : array[0..3] of byte = (%00000001, %00000010,
+                                           %00000100, %00001000);
+        var t, nrpasi: byte;
+
+procedure delay(var x : integer);
+          var i : integer;
+          begin
+               for i:= 0 to x do delay_ms(1);
+          end;
+
+          begin
+
+               DDRB:= $0a;
+               DDRD:= %00001111;
+               DDRC:= %11111111;
+               LCD_init;
+               nrpasi:= 0;
+               while 1=1 do begin
+                     t:= ADC_read(1);
+                     t:= t/16;
+                     LCD_text(1,1, 'Motor Pas cu Pas');
+                     LCD_byte(2, 1, nrpasi);
+                     if t < 5 then t:= 5;
+                     if t < 63 then begin
+                        if PIND.6 = 1 then begin
+                           PORTB:= pas[0]; PORTC:= $01; delay(t);
+                           PORTB:= pas[1]; PORTC:= $02; delay(t);
+                           PORTB:= pas[2]; PORTC:= $04; delay(t);
+                           PORTB:= pas[3]; PORTC:= $08; delay(t);
+                           inc(nrpasi);
+                        end;
+                        if PIND.6 = 0 then begin
+                           PORTB:= pas[3]; PORTC:= $08; delay(t);
+                           PORTB:= pas[2]; PORTC:= $04; delay(t);
+                           PORTB:= pas[1]; PORTC:= $02; delay(t);
+                           PORTB:= pas[0]; PORTC:= $01; delay(t);
+                           nrpasi:= nrpasi-1;
+                        end;
+                     end;
+               end;
+          end.

@@ -1,0 +1,16 @@
+main
+	UART1_Write_Text
+		UART1_Write
+	lcd_init
+		lcd_comm
+	UART1_Data_Ready
+	UART1_Read
+	lcd_word
+		lcd_move
+			lcd_comm
+		lcd_cmd
+			lcd_comm
+		lcd_data
+			lcd_comm
+		Div_16x16_U
+	UART1_Init

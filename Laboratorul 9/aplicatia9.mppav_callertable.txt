@@ -1,0 +1,17 @@
+main
+	CustomChar
+		lcd_cmd
+			lcd_comm
+		lcd_data
+			lcd_comm
+	lcd_init
+		lcd_comm
+	lcd_text
+		lcd_move
+			lcd_comm
+		lcd_data
+			lcd_comm
+	lcd_move
+		lcd_comm
+	lcd_data
+		lcd_comm

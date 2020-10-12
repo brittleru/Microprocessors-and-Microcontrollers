@@ -1,0 +1,27 @@
+program lab11;
+
+        uses Flexunit;
+        var a: word;
+
+begin
+
+     UART1_init(9600);
+     LCD_init;
+     LCD_text(1,1, 'Potentiometru');
+     
+     while 1=1 do begin
+           a:= ADC_Read(1) div 4;
+           LCD_Word(2,1,a);
+           UART1_Write(a);
+           delay_ms(100);
+           
+           if (a > 170) then begin
+                 LCD_text(2,7, 'ATENTIE!');
+                 UART1_Write('A');
+
+           end
+           else begin
+                LCD_text(2, 7, '          ');
+           end;
+     end;
+end.

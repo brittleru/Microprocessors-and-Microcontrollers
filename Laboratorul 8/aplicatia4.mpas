@@ -1,0 +1,18 @@
+program aplicatia4;
+
+        uses Flexunit;
+        var k: word;
+            
+begin
+
+     UART1_init(9600);
+     UART1_write_text('255');
+     LCD_init;
+     while 1=1 do begin
+           if UART1_data_ready then begin
+           k:= UART1_read;
+           LCD_word(1, 1, k);
+           delay_ms(30);
+           end;
+     end;
+end.

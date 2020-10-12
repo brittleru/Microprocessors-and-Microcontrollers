@@ -1,0 +1,18 @@
+main
+	lcd_init
+		lcd_comm
+	ADC_Read
+		ADC_Init
+		ADC_Get_Sample
+	lcd_text
+		lcd_move
+			lcd_comm
+		lcd_data
+			lcd_comm
+	lcd_byte
+		lcd_move
+			lcd_comm
+		lcd_data
+			lcd_comm
+		Div_8x8_U
+	delay

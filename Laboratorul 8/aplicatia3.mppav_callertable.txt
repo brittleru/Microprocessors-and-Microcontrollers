@@ -1,0 +1,8 @@
+main
+	lcd_init
+		lcd_comm
+	lcd_text
+		lcd_move
+			lcd_comm
+		lcd_data
+			lcd_comm

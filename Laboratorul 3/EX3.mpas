@@ -1,0 +1,37 @@
+program EX3;
+
+{ Declarations section }
+
+begin
+     asm
+
+        LDI R25, %11111111
+        OUT DDRC, R25               // PORT LED    OUTPUT
+        
+        LDI R25, %00000000
+        OUT DDRA, R25               // PORT BUTTON INPUT
+        
+        START:
+              IN R25, PINA                // CITIM STAREA BUTONULUI
+              ANDI R25, %00000001
+
+              BRNE STINGERE
+
+              LDI R25, %00000000
+              OUT PORTC, R25
+
+              LDI R25, %11111111
+              OUT PORTC, R25
+              
+              JMP START
+              
+              STINGERE:
+                       LDI R25, %00000000
+                       OUT PORTC, R25
+                 
+        JMP START
+
+
+
+     end;
+end.

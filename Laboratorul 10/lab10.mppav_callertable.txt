@@ -1,0 +1,4 @@
+main
+	ADC_Read
+		ADC_Init
+		ADC_Get_Sample

@@ -1,0 +1,15 @@
+0	1	mPAVR.exe -DBG -pATMEGA16 -MSF -LHF -Y -DL -SSA -O11111114 -fo16 -N"G:\MicMic\Laborator Microprocesoare\Laboratorul 10\aplicatia6.mppav" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroPascal PRO for AVR\defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroPascal PRO for AVR\uses\lte64kw\" -SP"G:\MicMic\Laborator Microprocesoare\Laboratorul 10\" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_String.mcl" "__Lib_Conversions.mcl" "__Lib_Time.mcl" "__Lib_Trigon.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_ADC.mcl" "__Lib_EEPROM_eew.mcl" "__Lib_FLASH_rwe.mcl" "__Lib_PWM_0.mcl" "__Lib_PWM1_2_presc.mcl" "__Lib_PWM16bit_12.mcl" "__Lib_SPI_b7654_x2.mcl" "__Lib_TWI.mcl" "__Lib_UART_d01_ursel.mcl" "__Lib_PortExpander.mcl" "__Lib_CANSPI.mcl" "__Lib_CF.mcl" "__Lib_CFFat16.mcl" "__Lib_GlcdFonts.mcl" "__Lib_Glcd.mcl" "__Lib_LcdConsts.mcl" "__Lib_Mmc.mcl" "__Lib_MmcFat16.mcl" "__Lib_RS485.mcl" "__Lib_S1D13700.mcl" "__Lib_T6963C.mcl" "__Lib_SPIGlcd.mcl" "__Lib_SPILcd.mcl" "__Lib_SPILcd8.mcl" "__Lib_SPIT6963C.mcl" "__Lib_TFT.mcl" "__Lib_TouchPanel_TFT.mcl" "__Lib_TouchPanel.mcl" "__Lib_EthEnc28j60.mcl" "__Lib_EthEnc24j600.mcl" "aplicatia6.mpas"	 
+diagnostics: 0	133	Compilation Started	G:\MicMic\Laborator Microprocesoare\Laboratorul 10\aplicatia6.mpas
+hint: 1	1015	Hint: Compiling unit "G:\MicMic\Laborator Microprocesoare\Laboratorul 10\aplicatia6.mpas"	aplicatia6.mpas
+hint: 15	1016	Warning: Source size (8) does not match destination size (16)	aplicatia6.mpas
+hint: 16	1016	Warning: Source size (5) does not match destination size (16)	aplicatia6.mpas
+hint: 20	1010	Hint: Unit "aplicatia6.mpas" has been recompiled	aplicatia6.mpas
+diagnostics: 0	134	Compiled Successfully	G:\MicMic\Laborator Microprocesoare\Laboratorul 10\aplicatia6.mpas
+diagnostics: 0	139	All files Compiled in 31 ms	 
+hint: 0	1144	Used RX (bytes): 18 (56%)   Free RX (bytes): 14 (44%)	Used RX (bytes): 18 (56%)   Free RX (bytes): 14 (44%)
+hint: 0	1144	Static RAM (bytes): 4   Dynamic RAM (bytes): 1020	Static RAM (bytes): 4   Dynamic RAM (bytes): 1020
+hint: 0	1144	Used ROM (bytes): 952 (6%)  Free ROM (bytes): 15432 (94%)	Used ROM (bytes): 952 (6%)  Free ROM (bytes): 15432 (94%)
+diagnostics: 0	145	Project Linked Successfully	aplicatia6.mppav
+diagnostics: 0	140	Linked in 125 ms	 
+diagnostics: 0	141	Project 'aplicatia6.mppav' completed: 203 ms	 
+diagnostics: 0	103	Finished successfully: 23 Apr 2020, 19:45:05	aplicatia6.mppav

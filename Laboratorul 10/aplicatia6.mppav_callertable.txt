@@ -1,0 +1,19 @@
+main
+	lcd_init
+		lcd_comm
+	ADC_Read
+		ADC_Init
+		ADC_Get_Sample
+	lcd_word
+		lcd_move
+			lcd_comm
+		lcd_cmd
+			lcd_comm
+		lcd_data
+			lcd_comm
+		Div_16x16_U
+	lcd_text
+		lcd_move
+			lcd_comm
+		lcd_data
+			lcd_comm

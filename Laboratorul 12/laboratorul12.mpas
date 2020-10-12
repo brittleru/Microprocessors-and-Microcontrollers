@@ -1,0 +1,38 @@
+program laboratorul12;
+
+        const i : integer = 20;
+              pas : array [0..3] of byte = (%00000001, %00000010,
+                                            %00000100, %00001000);
+        var   t : integer;
+
+procedure delay(var x : integer);
+
+          var i: integer;
+          begin
+               for i:= 0 to x do delay_ms(1);
+          end;
+
+          begin
+               DDRD:= %00001111;
+               while 1=1 do begin
+                     t:= ADC_read(1);
+                     t:= t/32;
+                     
+                     if t < 2 then t:= 2;
+                     if t < 31 then begin
+                       if PINA.0 = 1 then begin
+                          PORTD:= pas[0]; delay(t);
+                          PORTD:= pas[1]; delay(t);
+                          PORTD:= pas[2]; delay(t);
+                          PORTD:= pas[3]; delay(t);
+                       end;
+                       
+                       if PINA.0 = 0 then begin
+                          PORTD:= pas[3]; delay(t);
+                          PORTD:= pas[2]; delay(t);
+                          PORTD:= pas[1]; delay(t);
+                          PORTD:= pas[0]; delay(t);
+                       end;
+                     end;
+               end;
+          end.

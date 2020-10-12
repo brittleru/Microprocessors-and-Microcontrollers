@@ -1,0 +1,13 @@
+0	1	mPAVR.exe -DBG -pATMEGA16 -MSF -LHF -Y -DL -SSA -O11111114 -fo16 -N"G:\MicMic\Laborator Microprocesoare\Laboratorul 7\ex1.mppav" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroPascal PRO for AVR\defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroPascal PRO for AVR\uses\lte64kw\" -SP"G:\MicMic\Laborator Microprocesoare\Laboratorul 7\" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_String.mcl" "__Lib_Conversions.mcl" "__Lib_Time.mcl" "__Lib_Trigon.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_ADC.mcl" "__Lib_EEPROM_eew.mcl" "__Lib_FLASH_rwe.mcl" "__Lib_PWM_0.mcl" "__Lib_PWM1_2_presc.mcl" "__Lib_PWM16bit_12.mcl" "__Lib_SPI_b7654_x2.mcl" "__Lib_TWI.mcl" "__Lib_UART_d01_ursel.mcl" "__Lib_PortExpander.mcl" "__Lib_CANSPI.mcl" "__Lib_CF.mcl" "__Lib_CFFat16.mcl" "__Lib_GlcdFonts.mcl" "__Lib_Glcd.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_Mmc.mcl" "__Lib_MmcFat16.mcl" "__Lib_RS485.mcl" "__Lib_S1D13700.mcl" "__Lib_T6963C.mcl" "__Lib_SPIGlcd.mcl" "__Lib_SPILcd.mcl" "__Lib_SPILcd8.mcl" "__Lib_SPIT6963C.mcl" "__Lib_TFT.mcl" "__Lib_TouchPanel_TFT.mcl" "__Lib_TouchPanel.mcl" "__Lib_EthEnc28j60.mcl" "__Lib_EthEnc24j600.mcl" "ex1.mpas"	 
+diagnostics: 0	133	Compilation Started	G:\MicMic\Laborator Microprocesoare\Laboratorul 7\ex1.mpas
+hint: 1	1015	Hint: Compiling unit "G:\MicMic\Laborator Microprocesoare\Laboratorul 7\ex1.mpas"	ex1.mpas
+hint: 10	1010	Hint: Unit "ex1.mpas" has been recompiled	ex1.mpas
+diagnostics: 0	134	Compiled Successfully	G:\MicMic\Laborator Microprocesoare\Laboratorul 7\ex1.mpas
+diagnostics: 0	139	All files Compiled in 46 ms	 
+hint: 0	1144	Used RX (bytes): 4 (12%)   Free RX (bytes): 28 (88%)	Used RX (bytes): 4 (12%)   Free RX (bytes): 28 (88%)
+hint: 0	1144	Static RAM (bytes): 0   Dynamic RAM (bytes): 1024	Static RAM (bytes): 0   Dynamic RAM (bytes): 1024
+hint: 0	1144	Used ROM (bytes): 94 (1%)  Free ROM (bytes): 16290 (99%)	Used ROM (bytes): 94 (1%)  Free ROM (bytes): 16290 (99%)
+diagnostics: 0	145	Project Linked Successfully	ex1.mppav
+diagnostics: 0	140	Linked in 110 ms	 
+diagnostics: 0	141	Project 'ex1.mppav' completed: 219 ms	 
+diagnostics: 0	103	Finished successfully: 02 Apr 2020, 16:01:34	ex1.mppav

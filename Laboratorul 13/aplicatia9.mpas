@@ -1,0 +1,21 @@
+program aplicatia9;
+
+        uses Flexunit;
+        var a: word;
+
+begin
+
+     LCD_init;
+     LCD_text(1, 1, 'TEST SERVO');
+     DDRA.3:= 1;
+     while 1=1  do begin
+           a:= ADC_read(1);
+           a:= a + 1000;
+           PORTA.3:= 1;
+           delay_us(a);
+           PORTA.3:= 0;
+           delay_us(20000 - a);
+           LCD_word(2, 1, a);
+     end;
+
+end.
